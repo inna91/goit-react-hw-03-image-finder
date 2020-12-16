@@ -32,7 +32,7 @@ export default class App extends Component {
   }
 
   handleSearchBarSubmit = query => {
-    this.setState({ searchQuery: query, page: 1, pictures: [], error: null });
+    this.setState({ searchQuery: query, page: 1, error: null });
   };
 
   fetchPictures = () => {
@@ -78,9 +78,11 @@ export default class App extends Component {
       showModal,
       largeImageURL,
     } = this.state;
-    const shouldRenderButton = pictures.length > 0 && !isLoading;
+
+    const shouldRenderButton = pictures.length > 0 && !error;
     const picIsNotFound =
       searchQuery && pictures.length === 0 && !error && !isLoading;
+
     return (
       <div className={s.App}>
         {error && <p className={s.error}>Something went wrong. Try again</p>}

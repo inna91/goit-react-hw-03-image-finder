@@ -4,16 +4,18 @@ import s from './ImageGallery.module.css';
 
 const ImageGallery = ({ pictures, onClickImage }) => {
   return (
-    <ul className={s.ImageGallery}>
-      {pictures.map(({ webformatURL, tags, largeImageURL }) => (
-        <ImageGalleryItem
-          key={webformatURL}
-          webformatURL={webformatURL}
-          tags={tags}
-          onClickImage={() => onClickImage(largeImageURL)}
-        />
-      ))}
-    </ul>
+    pictures.length > 0 && (
+      <ul className={s.ImageGallery}>
+        {pictures.map(({ webformatURL, tags, largeImageURL }) => (
+          <ImageGalleryItem
+            key={webformatURL}
+            webformatURL={webformatURL}
+            tags={tags}
+            onClickImage={() => onClickImage(largeImageURL)}
+          />
+        ))}
+      </ul>
+    )
   );
 };
 
